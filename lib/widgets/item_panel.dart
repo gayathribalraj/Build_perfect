@@ -50,6 +50,7 @@ class _ItemsPanelState extends State<ItemPanel> {
           hintText: 'Textbox',
         ),
       ),
+      
       PlaceholderWidgets.Dropdown => DropdownMenu(
         dropdownMenuEntries: [],
         enabled: false,
@@ -82,6 +83,27 @@ class _ItemsPanelState extends State<ItemPanel> {
         children: [ElevatedButton(onPressed: () {}, child: Text('Save'))],
       ),
       PlaceholderWidgets.Label => Text('Label Field'),
+       PlaceholderWidgets.NumericText => TextField(
+        enabled: false,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          hintText: 'NumericText',
+        ),
+      ),
+       PlaceholderWidgets.AlphaNumeric => TextField(
+        enabled: false,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          hintText: 'AlphaNumeric',
+        ),
+      ),
+       PlaceholderWidgets.Searchable => DropdownMenu(
+        dropdownMenuEntries: [],
+        enabled: false,
+        hintText: 'Searchable',
+        width: 300,
+      ),
+
     };
   }
 
@@ -100,6 +122,15 @@ class _ItemsPanelState extends State<ItemPanel> {
       ),
       PlaceholderWidgets.Button => Icon(Icons.touch_app, color: Colors.white),
       PlaceholderWidgets.Label => Icon(Icons.label, color: Colors.white),
+      PlaceholderWidgets.NumericText => Icon(
+        Icons.onetwothree,
+        color: Colors.white,
+      ),
+      PlaceholderWidgets.Searchable => Icon(Icons.search_sharp, color: Colors.white),
+      PlaceholderWidgets.AlphaNumeric => Icon(
+        Icons.sort_by_alpha,
+        color: Colors.white,
+            ),
     };
   }
 

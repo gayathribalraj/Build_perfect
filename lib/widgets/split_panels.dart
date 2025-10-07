@@ -30,12 +30,18 @@ class _SplitPanelState extends State<SplitPanel> {
     PlaceholderWidgets.Radio,
     PlaceholderWidgets.Button,
     PlaceholderWidgets.Label,
+        PlaceholderWidgets.Searchable,
+    PlaceholderWidgets.NumericText,
+    PlaceholderWidgets.AlphaNumeric,
+
+
   ];
 
   PanelLocation dragStart = (-1, Panel.lower);
   PanelLocation? dropPreview;
 
   PlaceholderWidgets? hoveringData;
+  
 
   /// this method is called when the itemplaceholder is dragged
   /// it's set  the state -> dragStart and data state properties
@@ -60,6 +66,7 @@ class _SplitPanelState extends State<SplitPanel> {
     setState(() {
       if (dropPreview!.$2 == Panel.upper) {
         upper.insert(max(dropPreview!.$1, upper.length), hoveringData!);
+
       }
     });
   }
