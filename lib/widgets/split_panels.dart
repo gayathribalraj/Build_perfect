@@ -34,6 +34,9 @@ class _SplitPanelState extends State<SplitPanel> {
     PlaceholderWidgets.Radio,
     PlaceholderWidgets.Button,
     PlaceholderWidgets.Label,
+    PlaceholderWidgets.searchable,
+    PlaceholderWidgets.NumericText,
+    PlaceholderWidgets.alphaNumeric,
   ];
 
   PanelLocation dragStart = (-1, Panel.lower);

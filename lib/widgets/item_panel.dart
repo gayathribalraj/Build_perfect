@@ -47,6 +47,7 @@ class _ItemsPanelState extends State<ItemPanel> {
   /// left widgets panels
 
   int selectedIndex = 0;
+  bool isExpanded = false;
 
   Widget getWidgetPlaceholders(
     PlaceholderWidgets controlName, {
@@ -210,24 +211,274 @@ class _ItemsPanelState extends State<ItemPanel> {
         ),
       ),
       PlaceholderWidgets.Radio => DraggedHolder(
+        onTapDraggedControl: () {
+          selectedIndex = index;
+
+          BpwidgetProps bpWidgetPropsObj = getWidgetProps(
+            widget.items[selectedIndex],
+          );
+          widget.onItemClicked!(bpWidgetPropsObj);
+          setState(() {});
+        },
         labelText: 'label ${index + 1}',
-        child: Row(
-          children: [
-            Radio(
-              toggleable: false,
-              value: '',
-              groupValue: '',
-              onChanged: (value) {},
-            ),
-            Text('Radio'),
-          ],
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border:
+                selectedIndex == index
+                    ? Border.all(width: 2, color: Colors.teal)
+                    : Border.all(width: 2, color: Colors.transparent),
+          ),
+
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+            children: [
+              Row(
+                children: [
+                  Radio(
+                    toggleable: false,
+                    value: '',
+                    groupValue: '',
+                    onChanged: (value) {},
+                  ),
+                  Text('Radio'),
+                ],
+              ),
+              selectedIndex == index
+                  ? GlobalStyles.selectedIcon
+                  : GlobalStyles.fillerSizedBox20,
+            ],
+          ),
         ),
       ),
-      PlaceholderWidgets.Button => Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [ElevatedButton(onPressed: () {}, child: Text('Save'))],
+      PlaceholderWidgets.Button => DraggedHolder(
+        onTapDraggedControl: () {
+          selectedIndex = index;
+
+          BpwidgetProps bpWidgetPropsObj = getWidgetProps(
+            widget.items[selectedIndex],
+          );
+          widget.onItemClicked!(bpWidgetPropsObj);
+          setState(() {});
+        },
+        labelText: 'label ${index + 1}',
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border:
+                selectedIndex == index
+                    ? Border.all(width: 2, color: Colors.teal)
+                    : Border.all(width: 2, color: Colors.transparent),
+          ),
+
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(onPressed: () {}, child: Text('Save')),
+                ],
+              ),
+              selectedIndex == index
+                  ? GlobalStyles.selectedIcon
+                  : GlobalStyles.fillerSizedBox20,
+            ],
+          ),
+        ),
       ),
-      PlaceholderWidgets.Label => Text('label ${index + 1}'),
+      PlaceholderWidgets.Label => DraggedHolder(
+        onTapDraggedControl: () {
+          selectedIndex = index;
+
+          BpwidgetProps bpWidgetPropsObj = getWidgetProps(
+            widget.items[selectedIndex],
+          );
+          widget.onItemClicked!(bpWidgetPropsObj);
+          setState(() {});
+        },
+        labelText: 'label ${index + 1}',
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border:
+                selectedIndex == index
+                    ? Border.all(width: 2, color: Colors.teal)
+                    : Border.all(width: 2, color: Colors.transparent),
+          ),
+
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+            children: [
+              Text('label ${index + 1}'),
+              selectedIndex == index
+                  ? GlobalStyles.selectedIcon
+                  : GlobalStyles.fillerSizedBox20,
+            ],
+          ),
+        ),
+      ),
+
+      PlaceholderWidgets.searchable => DraggedHolder(
+        onTapDraggedControl: () {
+          selectedIndex = index;
+
+          BpwidgetProps bpWidgetPropsObj = getWidgetProps(
+            widget.items[selectedIndex],
+          );
+          widget.onItemClicked!(bpWidgetPropsObj);
+          setState(() {});
+        },
+        labelText: 'label ${index + 1}',
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border:
+                selectedIndex == index
+                    ? Border.all(width: 2, color: Colors.teal)
+                    : Border.all(width: 2, color: Colors.transparent),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+            children: [
+              SizedBox(
+                width: 300,
+                child: DropdownMenu(
+                  dropdownMenuEntries: [],
+                  enabled: false,
+                  hintText: 'searchable',
+                  width: 300,
+                  inputDecorationTheme: InputDecorationTheme(
+                    disabledBorder: InputBorder.none,
+                  ),
+                ),
+              ),
+              selectedIndex == index
+                  ? GlobalStyles.selectedIcon
+                  : GlobalStyles.fillerSizedBox20,
+            ],
+          ),
+        ),
+      ),
+      PlaceholderWidgets.NumericText => DraggedHolder(
+        onTapDraggedControl: () {
+          /// when draggedholder is selected , selected formcontrol
+          /// label and other properties should be autopopulate
+          /// props panel
+          ///
+          selectedIndex = index;
+
+          BpwidgetProps bpWidgetPropsObj = getWidgetProps(
+            widget.items[selectedIndex],
+          );
+          widget.onItemClicked!(bpWidgetPropsObj);
+          setState(() {});
+        },
+        labelText: 'label ${index + 1}',
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border:
+                selectedIndex == index
+                    ? Border.all(width: 2, color: Colors.teal)
+                    : Border.all(width: 2, color: Colors.transparent),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SizedBox(
+                width: 300,
+                child: TextField(
+                  enabled:
+                      false, // enabled: selectedIndex == index ? true : false,
+                  decoration: InputDecoration(
+                    // border: OutlineInputBorder(
+                    //   borderSide: BorderSide(color: Colors.transparent),
+                    // ),
+                    hintText: 'NumericText',
+                    label: Text('NumericText'),
+                    floatingLabelStyle: TextStyle(fontSize: 14),
+
+                    // disabledBorder:
+                    //     selectedIndex == index
+                    //         ? OutlineInputBorder(
+                    //           borderRadius: BorderRadius.circular(10),
+                    //           borderSide: GlobalStyles.selectedBorderStyle,
+                    //         )
+                    //         : OutlineInputBorder(
+                    //           borderSide: GlobalStyles.unselectedBorderStyle,
+                    //         ),
+                  ),
+                ),
+              ),
+              selectedIndex == index
+                  ? GlobalStyles.selectedIcon
+                  : GlobalStyles.fillerSizedBox20,
+            ],
+          ),
+        ),
+      ),
+      PlaceholderWidgets.alphaNumeric => DraggedHolder(
+        onTapDraggedControl: () {
+          /// when draggedholder is selected , selected formcontrol
+          /// label and other properties should be autopopulate
+          /// props panel
+          ///
+          selectedIndex = index;
+
+          BpwidgetProps bpWidgetPropsObj = getWidgetProps(
+            widget.items[selectedIndex],
+          );
+          widget.onItemClicked!(bpWidgetPropsObj);
+          setState(() {});
+        },
+        labelText: 'label ${index + 1}',
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border:
+                selectedIndex == index
+                    ? Border.all(width: 2, color: Colors.teal)
+                    : Border.all(width: 2, color: Colors.transparent),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SizedBox(
+                width: 300,
+                child: TextField(
+                  enabled:
+                      false, // enabled: selectedIndex == index ? true : false,
+                  decoration: InputDecoration(
+                    // border: OutlineInputBorder(
+                    //   borderSide: BorderSide(color: Colors.transparent),
+                    // ),
+                    hintText: 'alphaNumeric',
+                    label: Text('alphaNumeric'),
+                    floatingLabelStyle: TextStyle(fontSize: 14),
+
+                    // disabledBorder:
+                    //     selectedIndex == index
+                    //         ? OutlineInputBorder(
+                    //           borderRadius: BorderRadius.circular(10),
+                    //           borderSide: GlobalStyles.selectedBorderStyle,
+                    //         )
+                    //         : OutlineInputBorder(
+                    //           borderSide: GlobalStyles.unselectedBorderStyle,
+                    //         ),
+                  ),
+                ),
+              ),
+              selectedIndex == index
+                  ? GlobalStyles.selectedIcon
+                  : GlobalStyles.fillerSizedBox20,
+            ],
+          ),
+        ),
+      ),
     };
   }
 
@@ -246,6 +497,18 @@ class _ItemsPanelState extends State<ItemPanel> {
       ),
       PlaceholderWidgets.Button => Icon(Icons.touch_app, color: Colors.white),
       PlaceholderWidgets.Label => Icon(Icons.label, color: Colors.white),
+      PlaceholderWidgets.NumericText => Icon(
+        Icons.numbers,
+        color: Colors.white,
+      ),
+      PlaceholderWidgets.searchable => Icon(
+        Icons.search_sharp,
+        color: Colors.white,
+      ),
+      PlaceholderWidgets.alphaNumeric => Icon(
+        Icons.sort_by_alpha,
+        color: Colors.white,
+      ),
     };
   }
 
@@ -286,42 +549,119 @@ class _ItemsPanelState extends State<ItemPanel> {
             }).toList(),
       );
     } else {
-      return GridView.count(
-        crossAxisCount: widget.crossAxisCount,
-        mainAxisSpacing: 5,
-        crossAxisSpacing: 5,
-        padding: const EdgeInsets.all(4),
-        children:
-            itemsCopy.asMap().entries.map<Widget>((e) {
-              Color textColor = Colors.white;
-              Widget child = Card(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.teal.shade400,
-                    borderRadius: BorderRadius.circular(8),
+      return Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.blueAccent.shade100,
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text('Text Fields', style: TextStyle(fontSize: 18)),
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      isExpanded = !isExpanded;
+                    });
+                  },
+                  icon: Icon(
+                    isExpanded ? Icons.expand_less : Icons.expand_more,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      renderIconsForFormControlsCard(e.value),
-                      Text(
-                        e.value.name,
-                        style: TextStyle(color: textColor, fontSize: 12),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 10),
+         Container(
+            decoration: BoxDecoration(
+              color: Colors.blueAccent.shade100,
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text('Select Fields', style: TextStyle(fontSize: 18)),
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      isExpanded = !isExpanded;
+                    });
+                  },
+                  icon: Icon(
+                    isExpanded ? Icons.expand_less : Icons.expand_more,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 10),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.blueAccent.shade100,
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text('Actions Fields', style: TextStyle(fontSize: 18)),
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      isExpanded = !isExpanded;
+                    });
+                  },
+                  icon: Icon(
+                    isExpanded ? Icons.expand_less : Icons.expand_more,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 10),
+
+          Expanded(
+            child: GridView.count(
+              crossAxisCount: widget.crossAxisCount,
+              mainAxisSpacing: 5,
+              crossAxisSpacing: 5,
+              padding: const EdgeInsets.all(4),
+              children:
+                  itemsCopy.asMap().entries.map<Widget>((e) {
+                    Color textColor = Colors.white;
+                    Widget child = Card(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.teal.shade400,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            renderIconsForFormControlsCard(e.value),
+                            Text(
+                              e.value.name,
+                              style: TextStyle(color: textColor, fontSize: 12),
+                            ),
+                          ],
+                        ),
                       ),
-                    ],
-                  ),
-                ),
-              );
-              return Draggable(
-                feedback: child,
-                child: MyDraggableWidget(
-                  data: e.value.name,
-                  onDragStart: () => widget.onDragStart((e.key, widget.panel)),
-                  child: child,
-                ),
-              );
-            }).toList(),
+                    );
+                    return Draggable(
+                      feedback: child,
+                      child: MyDraggableWidget(
+                        data: e.value.name,
+                        onDragStart:
+                            () => widget.onDragStart((e.key, widget.panel)),
+                        child: child,
+                      ),
+                    );
+                  }).toList(),
+            ),
+          ),
+        ],
       );
     }
   }
@@ -358,6 +698,24 @@ class _ItemsPanelState extends State<ItemPanel> {
         controlName: 'page1_',
         controlType: 'Textfield',
       ),
+      PlaceholderWidgets.searchable => BpwidgetProps(
+        label: 'label ${selectedIndex + 1}',
+        controlName: 'page1_',
+        controlType: 'Dropdown',
+      ),
+      PlaceholderWidgets.NumericText => BpwidgetProps(
+        label: 'label ${selectedIndex + 1}',
+        controlName: 'page1_',
+        controlType: 'Textfield',
+      ),
+      PlaceholderWidgets.alphaNumeric => BpwidgetProps(
+        label: 'label ${selectedIndex + 1}',
+        controlName: 'page1_',
+        controlType: 'Textfield',
+      ),
     };
   }
 }
+
+//Expanded
+
