@@ -107,7 +107,7 @@ class _ItemsPanelState extends State<ItemPanel> {
               ),
               selectedIndex == index
                   ? GlobalStyles.selectedIcon
-                  : GlobalStyles.fillerSizedBox20,
+                  : GlobalStyles.fillerSizedBox50,
             ],
           ),
         ),
@@ -160,7 +160,7 @@ class _ItemsPanelState extends State<ItemPanel> {
               ),
               selectedIndex == index
                   ? GlobalStyles.selectedIcon
-                  : GlobalStyles.fillerSizedBox20,
+                  : GlobalStyles.fillerSizedBox50,
             ],
           ),
         ),
@@ -203,9 +203,10 @@ class _ItemsPanelState extends State<ItemPanel> {
                   ],
                 ),
               ),
+              GlobalStyles.fillerSizedBox50,
               selectedIndex == index
                   ? GlobalStyles.selectedIcon
-                  : GlobalStyles.fillerSizedBox20,
+                  : GlobalStyles.fillerSizedBox50,
             ],
           ),
         ),
@@ -247,7 +248,7 @@ class _ItemsPanelState extends State<ItemPanel> {
               ),
               selectedIndex == index
                   ? GlobalStyles.selectedIcon
-                  : GlobalStyles.fillerSizedBox20,
+                  : GlobalStyles.fillerSizedBox50,
             ],
           ),
         ),
@@ -283,7 +284,7 @@ class _ItemsPanelState extends State<ItemPanel> {
               ),
               selectedIndex == index
                   ? GlobalStyles.selectedIcon
-                  : GlobalStyles.fillerSizedBox20,
+                  : GlobalStyles.fillerSizedBox50,
             ],
           ),
         ),
@@ -315,7 +316,7 @@ class _ItemsPanelState extends State<ItemPanel> {
               Text('label ${index + 1}'),
               selectedIndex == index
                   ? GlobalStyles.selectedIcon
-                  : GlobalStyles.fillerSizedBox20,
+                  : GlobalStyles.fillerSizedBox50,
             ],
           ),
         ),
@@ -358,7 +359,7 @@ class _ItemsPanelState extends State<ItemPanel> {
               ),
               selectedIndex == index
                   ? GlobalStyles.selectedIcon
-                  : GlobalStyles.fillerSizedBox20,
+                  : GlobalStyles.fillerSizedBox50,
             ],
           ),
         ),
@@ -416,7 +417,7 @@ class _ItemsPanelState extends State<ItemPanel> {
               ),
               selectedIndex == index
                   ? GlobalStyles.selectedIcon
-                  : GlobalStyles.fillerSizedBox20,
+                  : GlobalStyles.fillerSizedBox50,
             ],
           ),
         ),
@@ -474,7 +475,7 @@ class _ItemsPanelState extends State<ItemPanel> {
               ),
               selectedIndex == index
                   ? GlobalStyles.selectedIcon
-                  : GlobalStyles.fillerSizedBox20,
+                  : GlobalStyles.fillerSizedBox50,
             ],
           ),
         ),
