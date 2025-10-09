@@ -93,6 +93,30 @@ class _SplitPanelState extends State<SplitPanel> {
       ),
       widgetType: PlaceholderWidgets.Label,
     ),
+    BPWidget(
+      bpwidgetProps: BpwidgetProps(
+        label: '',
+        controlName: '',
+        controlType: PlaceholderWidgets.searchable.name,
+      ),
+      widgetType: PlaceholderWidgets.searchable,
+    ),
+    BPWidget(
+      bpwidgetProps: BpwidgetProps(
+        label: '',
+        controlName: '',
+        controlType: PlaceholderWidgets.NumericText.name,
+      ),
+      widgetType: PlaceholderWidgets.NumericText,
+    ),
+    BPWidget(
+      bpwidgetProps: BpwidgetProps(
+        label: '',
+        controlName: '',
+        controlType: PlaceholderWidgets.alphaNumeric.name,
+      ),
+      widgetType: PlaceholderWidgets.alphaNumeric,
+    ),
   ];
 
   PanelLocation dragStart = (-1, Panel.lower);
@@ -246,7 +270,9 @@ class _SplitPanelState extends State<SplitPanel> {
             },
           ),
         );
+        
       },
+      
     );
   }
 }
