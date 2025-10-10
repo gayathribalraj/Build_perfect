@@ -65,14 +65,11 @@ class _ItemsPanelState extends State<ItemPanel> {
           ///
           selectedIndex = index;
 
-          BpwidgetProps bpWidgetPropsObj = getWidgetProps(
-            widget.items[selectedIndex].widgetType,
-          );
+          BpwidgetProps bpWidgetPropsObj = props;
           widget.onItemClicked!(bpWidgetPropsObj);
           setState(() {});
         },
-        labelText:
-            props.label.isEmpty ? 'label ${index + 1}' : props.controlName,
+        labelText: props.label.isEmpty ? 'label ${index + 1}' : props.label,
         child: DecoratedBox(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
@@ -90,11 +87,9 @@ class _ItemsPanelState extends State<ItemPanel> {
                   enabled:
                       false, // enabled: selectedIndex == index ? true : false,
                   decoration: InputDecoration(
-                    
                     hintText: 'Textbox',
                     label: Text('TextField'),
                     floatingLabelStyle: TextStyle(fontSize: 14),
-
                   ),
                 ),
               ),
@@ -109,13 +104,11 @@ class _ItemsPanelState extends State<ItemPanel> {
         onTapDraggedControl: () {
           selectedIndex = index;
 
-          BpwidgetProps bpWidgetPropsObj = getWidgetProps(
-            widget.items[selectedIndex].widgetType,
-          );
+          BpwidgetProps bpWidgetPropsObj = props;
           widget.onItemClicked!(bpWidgetPropsObj);
           setState(() {});
         },
-        labelText: 'label ${index + 1}',
+        labelText: props.label.isEmpty ? 'label ${index + 1}' : props.label,
         child: DecoratedBox(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
@@ -151,9 +144,7 @@ class _ItemsPanelState extends State<ItemPanel> {
         onTapDraggedControl: () {
           selectedIndex = index;
 
-          BpwidgetProps bpWidgetPropsObj = getWidgetProps(
-            widget.items[selectedIndex].widgetType,
-          );
+          BpwidgetProps bpWidgetPropsObj = props;
           widget.onItemClicked!(bpWidgetPropsObj);
           setState(() {});
         },
@@ -197,9 +188,7 @@ class _ItemsPanelState extends State<ItemPanel> {
         onTapDraggedControl: () {
           selectedIndex = index;
 
-          BpwidgetProps bpWidgetPropsObj = getWidgetProps(
-            widget.items[selectedIndex].widgetType,
-          );
+          BpwidgetProps bpWidgetPropsObj = props;
           widget.onItemClicked!(bpWidgetPropsObj);
           setState(() {});
         },
@@ -500,8 +489,13 @@ class _ItemsPanelState extends State<ItemPanel> {
   Widget build(BuildContext context) {
     /// have a copy of dragstartCopy to keep the local copy
     /// so
+    if (widget.items.length > 0) {
+      print(
+        'itemscopy WIDGET ID   => ${widget.items[0].id} ${widget.items[0].bpwidgetProps}',
+      );
+    }
+
     final itemsCopy = List<BPWidget>.from(widget.items);
-    print('itemscopy => $itemsCopy');
     if (widget.panel == Panel.upper) {
       return ListView(
         padding: const EdgeInsets.all(4),
